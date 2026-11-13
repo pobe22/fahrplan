@@ -1,21 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahrplan Dornbirn</title>
+    <title>Fahrplan-Übersicht</title>
     <script>
       window.error = function(e) { console.error(e); };
     </script>
-    <script type="text/javascript" src="https://fahrplan.vmobil.at/webapp/staticfiles/hafas-widget-core.1.0.0.js?L=vs_vvv"></script>
+
+    <style>
+      :root {
+        --bg: #f4f4f7;
+        --card-bg: #ffffff;
+        --text: #1f2333;
+        --muted: #6b7085;
+        --accent: #6d4aff;
+        --accent-soft: #efecff;
+        --radius: 14px;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+      }
+      header {
+        background: linear-gradient(135deg, #6d4aff 0%, #8f6bff 100%);
+        color: #fff;
+        padding: 2rem 1.5rem 2.5rem;
+        text-align: center;
+      }
+      header h1 { margin: 0 0 .3rem; font-size: 1.6rem; font-weight: 700; }
+      header p { margin: 0; opacity: .85; font-size: .95rem; }
+      main {
+        max-width: 1100px;
+        margin: -1.25rem auto 3rem;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.25rem;
+      }
+      .card {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: 0 4px 18px rgba(31, 35, 51, .08);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .card-head {
+        padding: 1rem 1.25rem .75rem;
+        border-bottom: 1px solid #ececf2;
+      }
+      .card-head h2 { margin: 0; font-size: 1.1rem; font-weight: 700; }
+      .card-head .sub {
+        margin: .25rem 0 0;
+        font-size: .82rem;
+        color: var(--muted);
+      }
+      .badge {
+        display: inline-block;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: .72rem;
+        font-weight: 600;
+        padding: .15rem .6rem;
+        border-radius: 999px;
+        margin-top: .4rem;
+      }
+      .card-body { padding: 1rem 1.25rem 1.25rem; flex: 1; }
+      .card-body iframe,
+      .card-body .widget-frame {
+        width: 100%;
+        height: 420px;
+        border: 0;
+        border-radius: 8px;
+        background: #fafafd;
+      }
+      .placeholder {
+        height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        color: var(--muted);
+        background: #fafafd;
+        border: 1px dashed #d8d8e4;
+        border-radius: 8px;
+        padding: 1rem;
+        font-size: .9rem;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: .75rem;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: .9rem;
+        padding: .55rem 1.1rem;
+        border-radius: 8px;
+        transition: background .15s ease;
+      }
+      .btn:hover { background: #5a38e0; }
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: .8rem;
+        padding: 0 1rem 2rem;
+      }
+    </style>
   </head>
   <body>
-    <div
-      data-hfs-widget="true"
-      data-hfs-widget-sq="true"
-      data-hfs-widget-sq-location="A=1@O=Dornbirn Stadtbad@X=9743399@Y=47409451@U=81@L=480062700@p=1774561463@i=A%at:48:627@"
-      data-hfs-widget-sq-locationname="Dornbirn Stadtbad"
-      style="width:100%; min-height: 400px;"
-    ></div>
+    <header>
+      <h1>Fahrplan-Übersicht</h1>
+    </header>
+
+    <main>
+      <section class="card">
+        <div class="card-head">
+          <h2>Graz · Nikolaus-Harnoncourt-Park</h2>
+        </div>
+        <div class="card-body">
+          <iframe 
+            framborder="0" 
+            style="border:0px;" 
+            src="https://fahrplan.oebb.at/bin/stboard.exe/dn?L=vs_liveticker&evaId=691665&boardType=dep&productsFilter=1011111111011&dirInput=1160108&tickerID=dep&start=yes&eqstops=false&showJourneys=12&additionalTime=0">
+          </iframe>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Dornbirn · Stadtbad</h2>
+        </div>
+        <div class="card-body">
+          <div class="widget-frame">
+            <script type="text/javascript"
+              src="https://fahrplan.vmobil.at/webapp/staticfiles/hafas-widget-core.1.0.0.js?L=vs_vvv"></script>
+            <div
+              data-hfs-widget="true"
+              data-hfs-widget-sq="true"
+              data-hfs-widget-sq-location="A=1@O=Dornbirn Stadtbad@X=9743399@Y=47409451@U=81@L=480062700@p=1774561463@i=A%at:48:627@"
+              data-hfs-widget-sq-locationname="Dornbirn Stadtbad"
+              style="width:100%; min-height: 400px;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Bad Wurzach · Salvatorkolleg</h2>
+        </div>
+        <div class="card-body">
+        <iframe 
+          title="Abfahrten Bad Wurzach Salvatorkolleg" 
+          frameborder="0"
+          style="border:0;width:100%;height:420px;"
+          src="https://bodo.de/fahren/fahrplanauskunft/?tab=abfahrten&from_id=de%3A08436%3A3444&from=Bad+Wurzach%2C+Salvatorkolleg">
+        </iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Fahrplandaten: ÖBB Scotty · vmobil (Vorarlberg) · bodo (Baden-Württemberg)
+    </footer>
   </body>
 </html>
